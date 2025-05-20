@@ -19,6 +19,7 @@
                 <li><a href="#mais-vistos">Mais Vistos</a></li>
                 <li><a href="#recomendados">Recomendados</a></li>
                 <li><a href="sobre.html" target="_blank">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
     </header>
@@ -121,10 +122,52 @@
                 </td>
             </tr>
         </table>
+
+        <section id="contato" class="contato">
+            <h2 class="contatos-titulo">Entre em Contato</h2>
+            <form action="" class="contatos-formulario" id="formulario" onsubmit="enviarWhats(event)">
+                <div class="grupo-form">
+                    <input type="text" placeholder="Nome" class="campo-form" id="nome">
+                </div>
+    
+                <div class="grupo-form">
+                    <textarea name="texto-mensagem" class="campo-form" placeholder="Digite sua Mensagem" rows="6"
+                        id="mensagem"></textarea>
+                </div>
+    
+                <button type="submit" class="botao-form">Enviar Whatsapp</button>
+            </form>
+        </section>
     </main>
     <footer style="margin-top: 30px; padding: 10px; background-color: #000000; color: white; text-align: center;">
         © Todos os direitos reservados.
     </footer>
+
+    <!-- COMANDOS JAVASCRIPT -->
+    <script>
+        function enviarWhats(event) { // função que vai ter um evento
+
+            event.preventDefault() // Impede o envio tradicional do formulário
+
+            const nome = document.getElementById('nome').value; // cria a variavel nome pegando o valor do id do form
+            const mensagem = document.getElementById('mensagem').value; // cria a variavel msg pegando o valor do id do form
+            const telefone = '5511999805253'; // cria a variavel do num do whats
+
+            const texto = `Olá! Me chamo ${nome}, ${mensagem}`
+            const msgFormatada = encodeURIComponent(texto) // formata a url para a msg não ter espaço
+
+            const url = `https://whatsa.me/${telefone}/?t=${msgFormatada}` // cria a url
+
+            window.open(url, '_blank') // faz abrir em outra guia
+
+            // Limpa os campos
+            document.getElementById('nome').value = '';
+            document.getElementById('mensagem').value = '';
+
+            // Alerta de confirmação da mensagem
+            alert('Mensagem enviada com sucesso!')
+        }
+    </script>
 
 </body>
 
