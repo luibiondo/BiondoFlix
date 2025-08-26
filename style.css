@@ -34,9 +34,9 @@ header {
     width: auto;
 }
 
-#logo-img:hover {
+/* #logo-img:hover {
     transform: scale(0.8);
-}
+} */
 
 nav ul {
     list-style: none;
